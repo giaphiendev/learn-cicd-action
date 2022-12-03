@@ -8,6 +8,9 @@ from django.conf.urls.static import static
 def health(request):
     return HttpResponse("OK")
 
+def home(request):
+    return HttpResponse("Welcome to my channel")
+
 
 def cushandler404(request, exception):
     return HttpResponse("page not found", status=404)
@@ -18,6 +21,7 @@ urlpatterns = (
         [
             # re_path(r"^api/", include("api.urls", namespace="api")),
             re_path(r"^_health$", health, name="health_check"),
+            re_path(r"^$", home, name="home"),
             path('admin/', admin.site.urls),
         ]
         + static(settings.MEDIA_URL_PATH, document_root=settings.MEDIA_ROOT)
