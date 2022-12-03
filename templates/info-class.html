@@ -1,0 +1,55 @@
+{% autoescape off %}
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+    <div>
+        <div style="border-bottom:1px solid #eee">
+            <a href="#" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">FPT-HANOI</a>
+        </div>
+        <h2>Time table of revision class</h2>
+        <div>
+            <table>
+                <tr>
+                    <th>Subject</th>
+                    <th>Teacher</th>
+                    <th>Day of week</th>
+                    <th>Time Start</th>
+                    <th>Time End</th>
+                </tr>
+                {% for item in list_time_table_res %}
+                    <tr>
+                        <td>
+                            <strong>
+                                {{ item.name_subject }}
+                            </strong>
+                        </td>
+                        <td>
+                            <strong>{{ item.name_teacher }}</strong>
+                        </td>
+                        <td>{{ item.time_table.day_of_week }}</td>
+                        <td>{{ item.time_table.time_start }}</td>
+                        <td>{{ item.time_table.time_end }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div style="float:right;padding:8px 0;color:#aaa;font-size:0.8em;line-height:1;font-weight:300">
+            <p>8 Ton That Thuyet, Ha Noi, Viet Nam</p>
+            <p>FPT - HANOI, VIETNAM</p>
+        </div>
+    </div>
+{% endautoescape %}

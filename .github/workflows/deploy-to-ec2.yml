@@ -1,0 +1,22 @@
+name: Action deploy to ec2
+
+on:
+  push:
+    branches:
+      - develop
+    # paths:
+    #   - .github/workflows/deploy-to-ec2.yml
+
+env:
+  PROJECT_ENVIRONMENT: develop
+
+jobs:
+  develop-deploy:
+    runs-on: self-hosted
+    name: develop-deploy
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+      
+      - name: docker compose up again
+        run: docker-compose up -d

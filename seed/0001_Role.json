@@ -1,0 +1,52 @@
+[
+  {
+    "model": "core.Role",
+    "pk": 1,
+    "fields": {
+      "deleted_at": null,
+      "name": "super_admin",
+      "created_at": "2022-07-18 21:05:05",
+      "updated_at": "2022-07-18 21:05:05"
+    }
+  },
+  {
+    "model": "core.Role",
+    "pk": 2,
+    "fields": {
+      "deleted_at": null,
+      "name": "admin",
+      "created_at": "2022-07-18 21:05:05",
+      "updated_at": "2022-07-18 21:05:05"
+    }
+  },
+  {
+    "model": "core.Role",
+    "pk": 3,
+    "fields": {
+      "deleted_at": null,
+      "name": "staff",
+      "created_at": "2022-07-18 21:05:05",
+      "updated_at": "2022-07-18 21:05:05"
+    }
+  },
+  {
+    "model": "core.Role",
+    "pk": 4,
+    "fields": {
+      "deleted_at": null,
+      "name": "develop",
+      "created_at": "2022-07-18 21:05:05",
+      "updated_at": "2022-07-18 21:05:05"
+    }
+  },
+  {
+    "model": "core.Role",
+    "pk": 5,
+    "fields": {
+      "deleted_at": null,
+      "name": "customer",
+      "created_at": "2022-07-18 21:05:05",
+      "updated_at": "2022-07-18 21:05:05"
+    }
+  }
+]

@@ -1,0 +1,65 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:5.7
+    networks:
+      local:
+    container_name: django_template_db
+    # restart: always
+    env_file:
+      - .env.dev
+    volumes:
+      - ./data:/data
+    ports:
+      - "3306:3306"
+
+  redis:
+    image: redis:6.0
+    ports:
+      - "6379:6379"
+    networks:
+      local:
+
+
+  backend:
+    build:
+      dockerfile: ./Dockerfile
+      context: ./
+    image: django_template_image:latest
+    # restart: on-failure
+    ports:
+      - "${HOST_PUBLISH_IP:-0.0.0.0}:${BACKEND_PORT:-8000}:8000"
+      - "${HOST_PUBLISH_IP:-0.0.0.0}:${BACKEND_PORT:-5005}:5005"
+    volumes:
+      - ./:/app
+    env_file:
+      - .env.dev
+    depends_on:
+      - db
+      - redis
+    networks:
+      local:
+    command: sh -c "python manage.py runserver 0.0.0.0:8000"
+  
+  # celery:
+  #   build:
+  #     dockerfile: ./Dockerfile
+  #     context: ./
+  #   image: django_template_image:latest
+  #   volumes:
+  #     - ./:/app
+  #   env_file:
+  #     - .env.dev
+  #   depends_on:
+  #     - backend
+  #     - redis
+  #     - db
+  #   networks:
+  #     local:
+  #   command: celery -A django_template worker -E -l INFO -Q celery
+
+
+networks:
+  local:
+    driver: bridge
