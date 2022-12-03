@@ -1,5 +1,8 @@
 from .base import *  # noqa: F403, F401
 
+PROJECT_ENVIRONMENT = os.getenv("PROJECT_ENVIRONMENT", 'PROJECT_ENVIRONMENT')
+print(f'PROJECT_ENVIRONMENT: {PROJECT_ENVIRONMENT}')
+
 if os.getenv("ON_LOGS", False):
     import errno
     LOG_DIR = "/var/log/base_django/"
