@@ -32,10 +32,27 @@
 
 ## Prerequisites
 
-### Configuration Nginx
+### Configuration Nginx 
+-[Followed by this](https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-as-a-reverse-proxy-on-ubuntu-22-04)
 
 - `$ sudo apt update`
-- `$ sudo apt install nginx` -> check status `$ sudo systemctl status nginx` you can restart,... and more
+- `$ sudo apt install nginx` -> check status `$ sudo systemctl status nginx` you can `restart` instead.
+- `$ sudo ufw allow 'Nginx HTTP'`
+- Configuration Nginx, it located in `/etc/nginx`
+- Make a new file inside `/etc/nginx/sites-available` folder
+```
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name _;
+        
+    location / {
+        proxy_pass http://localhost:8000/;
+        include proxy_params;
+    }
+}
+```
 
 ### Configuration docker
 
@@ -45,4 +62,8 @@
 
 - Follow [this](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04)
 
-## Authentication github action runners ()
+## Authentication [github action runners](https://github.com/giaphiendev/learn-cicd-action/settings/actions/runners)
+- After install github actions
+- Install svc `$ sudo ./svc.sh install`
+- To start svc `$ sudo ./svc.sh start`
+- To stop svc `$ sudo ./svc.sh stop`
